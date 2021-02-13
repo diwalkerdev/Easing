@@ -1,0 +1,6 @@
+[submodule "CppEssentials"]
+	path = CppEssentials
+	url = git@github.com:diwalkerdev/CppEssentials.git
+[submodule "deps/CppEssentials"]
+	path = deps/CppEssentials
+	url = git@github.com:diwalkerdev/CppEssentials.git

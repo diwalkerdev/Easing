@@ -1,0 +1,31 @@
+projectRoot = "../.."
+
+compiler = "clang++"
+ar = "ar"
+compilerFrontend="gcc"
+
+flags = [
+    "-std=c++20",
+    "-O3",
+    "-g",
+    "-fsanitize=address",
+    "-fno-omit-frame-pointer", # get nicer stack traces from address sanitizer.
+    "-fsanitize=undefined",
+    "-Wall"
+]
+
+# [[builds]]
+#     name = "easings"
+#     buildRule = "dynamiclib"
+#     outputName = "Easings"
+#     srcDirs = ["lib"]
+#     includePaths = ["include"]
+
+
+[[builds]]
+    name = "tests"
+    buildRule = "exe"
+    outputName = "Tests"
+    srcDirs = ["tests"]
+    includePaths = ["include", "deps/CppEssentials/include"]
+
