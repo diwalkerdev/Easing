@@ -1,7 +1,22 @@
 
 #include "easing/debounce.h"
+#include "dllexports.h"
 
-using namespace easing;
+
+namespace easing
+{
+
+void integrate_debounce(easing::DebounceData& data, float ms)
+{
+    if (data.state != easing::DebounceState::DEFAULT)
+    {
+        data.time_ms -= ms;
+        if (data.time_ms <= 0)
+        {
+            data.state = easing::DebounceState::DEFAULT;
+        }
+    }
+}
 
 Debounce::Debounce(DebounceData& item)
     : data(item)
@@ -61,14 +76,4 @@ auto Debounce::set(bool value) -> bool
     }
 }
 
-void integrate_debounce(DebounceData& data, float ms)
-{
-    if (data.state != DebounceState::DEFAULT)
-    {
-        data.time_ms -= ms;
-        if (data.time_ms <= 0)
-        {
-            data.state = DebounceState::DEFAULT;
-        }
-    }
-}
+} // namespace easing

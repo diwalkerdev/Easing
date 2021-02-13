@@ -1,23 +1,24 @@
 #pragma once
+#include "dllexports.h"
 #include "typedefs.h"
 
 namespace easing
 {
 
-enum class DebounceState : uint8 {
+enum class DLL_PUBLIC DebounceState : uint8 {
     DEFAULT,
     RUNNING_GOT,
     RUNNING
 };
 
-struct DebounceData {
+struct DLL_PUBLIC DebounceData {
     int           timeout_ms;
     int           time_ms;
     DebounceState state;
     int8          ref_count;
 };
 
-struct Debounce {
+struct DLL_PUBLIC Debounce {
     Debounce(DebounceData& item);
     ~Debounce();
     Debounce(Debounce const& other);
@@ -38,6 +39,6 @@ private:
     DebounceData& data;
 };
 
-void integrate_debounce(DebounceData& data, float ms);
+DLL_PUBLIC void integrate_debounce(easing::DebounceData& data, float ms);
 
 } // namespace easing

@@ -1,4 +1,5 @@
 #pragma once
+#include "dllexports.h"
 #include "typedefs.h"
 
 namespace easing
@@ -13,7 +14,7 @@ struct LinearData {
     float       current_value;
     float       rate;
     LinearState state;
-    uint8       ref_count { 0 };
+    uint8       ref_count;
 };
 
 struct Linear {
@@ -28,7 +29,8 @@ struct Linear {
     {
         data.ref_count -= 1;
     }
-    void init(float value, float rate)
+
+    void reset(float value, float rate)
     {
         data.target_value  = value;
         data.current_value = value;
@@ -51,6 +53,6 @@ struct Linear {
 };
 
 
-void integrate_linear(LinearData& data, float ms);
+void DLL_PUBLIC integrate_linear(LinearData& data, float ms);
 
 } // namespace easing

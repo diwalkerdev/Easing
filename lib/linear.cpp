@@ -1,5 +1,7 @@
 #include "easing/linear.h"
-using namespace easing;
+
+namespace easing
+{
 
 void integrate_linear(LinearData& data, float ms)
 {
@@ -8,10 +10,12 @@ void integrate_linear(LinearData& data, float ms)
         return;
     }
 
-    data.current_value -= data.rate;
-    if (data.current_value < data.target_value)
+    data.current_value -= (data.rate * (ms / 1000));
+    if (data.current_value <= data.target_value)
     {
         data.state         = LinearState::Default;
         data.current_value = data.target_value;
     }
 }
+
+} // namespace easing

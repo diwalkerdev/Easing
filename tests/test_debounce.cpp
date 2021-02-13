@@ -69,10 +69,10 @@ void test_get_set_and_step_example()
     assert(easer.debouncers[0].time_ms == 0);
 }
 
-int main()
+void debounce_main()
 {
     test_make_debounce_switch_creates_one_element();
     test_make_debounce_switch_twice_creates_two_elements();
     test_get_set_and_step_example();
-    printf("Test easing complete.\n");
+    printf("TEST easing::debounce PASSED\n");
 }

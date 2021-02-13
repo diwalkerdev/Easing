@@ -14,16 +14,17 @@ flags = [
     "-Wall"
 ]
 
-# [[builds]]
-#     name = "easings"
-#     buildRule = "dynamiclib"
-#     outputName = "Easings"
-#     srcDirs = ["lib"]
-#     includePaths = ["include"]
+[[builds]]
+    name = "easing"
+    buildRule = "dynamiclib"
+    outputName = "Easing"
+    srcDirs = ["lib"]
+    includePaths = ["include", "deps/CppEssentials/include"]
 
 
 [[builds]]
     name = "tests"
+    requires = ["easing"]
     buildRule = "exe"
     outputName = "Tests"
     srcDirs = ["tests"]
