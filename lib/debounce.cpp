@@ -1,12 +1,8 @@
-
 #include "easing/debounce.h"
 #include "dllexports.h"
 
 
-namespace easing
-{
-
-void integrate_debounce(easing::DebounceData& data, float ms)
+void easing::integrate_debounce(easing::DebounceData& data, float ms)
 {
     if (data.state != easing::DebounceState::DEFAULT)
     {
@@ -18,36 +14,33 @@ void integrate_debounce(easing::DebounceData& data, float ms)
     }
 }
 
-Debounce::Debounce(DebounceData& item)
-    : data(item)
+easing::Debounce::~Debounce()
 {
-    ++data.ref_count;
+    if (data)
+    {
+        data->ref_count -= 1;
+    }
 }
 
-Debounce::~Debounce()
-{
-    --data.ref_count;
-}
-
-Debounce::Debounce(Debounce const& other)
+easing::Debounce::Debounce(Debounce const& other)
     : data(other.data)
 {
-    ++data.ref_count;
+    data->ref_count += 1;
 }
 
-auto Debounce::operator=(Debounce const& other) -> Debounce&
+auto easing::Debounce::operator=(Debounce const& other) -> Debounce&
 {
     data = other.data;
-    ++data.ref_count;
+    data->ref_count += 1;
     return *this;
 }
 
-auto Debounce::get() -> bool
+auto easing::Debounce::get() -> bool
 {
-    switch (data.state)
+    switch (data->state)
     {
     case DebounceState::RUNNING: {
-        data.state = DebounceState::RUNNING_GOT;
+        data->state = DebounceState::RUNNING_GOT;
         return true;
     }
     default: {
@@ -56,18 +49,18 @@ auto Debounce::get() -> bool
     }
 }
 
-auto Debounce::set(bool value) -> bool
+auto easing::Debounce::set(bool value) -> bool
 {
     if (!value)
     {
         return false;
     }
 
-    switch (data.state)
+    switch (data->state)
     {
     case DebounceState::DEFAULT: {
-        data.state   = DebounceState::RUNNING;
-        data.time_ms = data.timeout_ms;
+        data->state   = DebounceState::RUNNING;
+        data->time_ms = data->timeout_ms;
         return true;
     }
     default: {
@@ -75,5 +68,3 @@ auto Debounce::set(bool value) -> bool
     }
     }
 }
-
-} // namespace easing

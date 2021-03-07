@@ -15,18 +15,26 @@ flags = [
 ]
 
 [[builds]]
+    name = "essentials"
+    buildRule = "dynamiclib"
+    outputName = "Essentials"
+    srcDirs = ["deps/CppEssentials/lib"]
+    localIncludePaths = ["deps/CppEssentials/include"]
+
+[[builds]]
     name = "easing"
+    requires = ["essentials"]
     buildRule = "dynamiclib"
     outputName = "Easing"
     srcDirs = ["lib"]
-    includePaths = ["include", "deps/CppEssentials/include"]
+    localIncludePaths = ["include"]
 
 
 [[builds]]
     name = "tests"
-    requires = ["easing"]
+    requires = ["essentials", "easing"]
     buildRule = "exe"
     outputName = "Tests"
     srcDirs = ["tests"]
-    includePaths = ["include", "deps/CppEssentials/include"]
+    localIncludePaths = ["include"]
 

@@ -20,6 +20,9 @@ DLL_PUBLIC
 void integrate(backfill_vector<DebounceData, 20>& debouncers, int ms);
 
 DLL_PUBLIC
+void integrate(backfill_vector<LinearData, 20>& debouncers, int ms);
+
+DLL_PUBLIC
 void sweep(backfill_vector<DebounceData, 20>& debouncers);
 
 inline auto make_debounce_switch(Easer& easer, int timeout_ms) -> Debounce
@@ -31,19 +34,24 @@ inline auto make_debounce_switch(Easer& easer, int timeout_ms) -> Debounce
     item.state      = DebounceState::DEFAULT;
     item.ref_count  = 0;
 
-    return { item };
+    easing::Debounce debounce;
+    debounce.set_data(&item);
+    return debounce;
 }
 
 inline auto make_linear_easer(Easer& easer, float value, float rate) -> Linear
 {
     easer.linears.allocate();
-    auto& item         = easer.linears.back();
-    item.target_value  = value;
-    item.current_value = value;
-    item.rate          = rate;
-    item.state         = LinearState::Default;
-    item.ref_count     = 0;
-    return { item };
+    auto& data         = easer.linears.back();
+    data.target_value  = value;
+    data.current_value = value;
+    data.rate          = rate;
+    data.state         = LinearState::Default;
+    data.ref_count     = 0;
+
+    Linear item;
+    item.set_data(&data);
+    return item;
 }
 
 } // namespace easing

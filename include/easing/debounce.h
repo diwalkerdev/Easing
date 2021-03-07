@@ -19,24 +19,32 @@ struct DLL_PUBLIC DebounceData {
 };
 
 struct DLL_PUBLIC Debounce {
-    Debounce(DebounceData& item);
+    Debounce() = default;
     ~Debounce();
+
     Debounce(Debounce const& other);
-    auto operator=(Debounce const& other) -> Debounce&;
+    Debounce& operator=(Debounce const& other);
+    // Debounce(Debounce&& other) = delete;
+    // Debounce& operator=(Debounce&& other) = delete;
 
-    // Move - deleted as same as copy construction.
-    Debounce(Debounce&& other) = delete;
-    auto operator=(Debounce&& other) -> Debounce& = delete;
+    void set_data(DebounceData* data_ptr)
+    {
+        data = data_ptr;
+        data->ref_count += 1;
+    };
 
-    // Accessors
+    void reset(int timeout_ms, int time_ms)
+    {
+        data->timeout_ms = timeout_ms;
+        data->time_ms    = timeout_ms;
+        data->state      = DebounceState::DEFAULT;
+    }
+
     auto get() -> bool;
-
-    // Modifiers
     auto set(bool value) -> bool;
 
-
 private:
-    DebounceData& data;
+    DebounceData* data;
 };
 
 DLL_PUBLIC void integrate_debounce(easing::DebounceData& data, float ms);

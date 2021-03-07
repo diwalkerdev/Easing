@@ -1,9 +1,10 @@
 #include "easing/linear.h"
 
-namespace easing
+DLL_PUBLIC void test_function()
 {
+}
 
-void integrate_linear(LinearData& data, float ms)
+void easing::integrate_linear(LinearData& data, float ms)
 {
     if (data.state == LinearState::Default)
     {
@@ -17,5 +18,3 @@ void integrate_linear(LinearData& data, float ms)
         data.current_value = data.target_value;
     }
 }
-
-} // namespace easing

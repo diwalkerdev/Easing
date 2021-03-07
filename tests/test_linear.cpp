@@ -4,6 +4,7 @@
 
 void test_make_linear_creates_one_element()
 {
+    test_function();
     easing::Easer easer;
     auto          le = make_linear_easer(easer, 100, 10);
 
@@ -49,7 +50,7 @@ void test_set_integrate_example()
     assert(item.state == easing::LinearState::Running);
 
     // 500ms is half a second, so value should change by half rate.
-    easing::integrate_linear(item, 500);
+    integrate_linear(item, 500.0);
 
     assert(item.target_value == 80);
     assert(item.current_value == 95);
