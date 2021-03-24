@@ -36,7 +36,7 @@ struct DLL_PUBLIC Debounce {
     void reset(int timeout_ms, int time_ms)
     {
         data->timeout_ms = timeout_ms;
-        data->time_ms    = timeout_ms;
+        data->time_ms    = time_ms;
         data->state      = DebounceState::DEFAULT;
     }
 
