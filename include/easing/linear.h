@@ -7,7 +7,7 @@ void DLL_PUBLIC test_function();
 namespace easing
 {
 
-enum class DLL_PUBLIC LinearState : uint8 {
+enum class LinearState : uint8 {
     Default,
     Running,
 };

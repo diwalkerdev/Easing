@@ -5,7 +5,7 @@
 namespace easing
 {
 
-enum class DLL_PUBLIC DebounceState : uint8 {
+enum class DebounceState : uint8 {
     DEFAULT,
     RUNNING_GOT,
     RUNNING
