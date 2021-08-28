@@ -1,8 +1,9 @@
 #include "easing/debounce.h"
-#include "dllexports.h"
+#include "Base/dllexports.h"
 
 
-void easing::integrate_debounce(easing::DebounceData& data, float ms)
+void
+easing::integrate_debounce(easing::DebounceData& data, float ms)
 {
     if (data.state != easing::DebounceState::DEFAULT)
     {
@@ -28,14 +29,16 @@ easing::Debounce::Debounce(Debounce const& other)
     data->ref_count += 1;
 }
 
-auto easing::Debounce::operator=(Debounce const& other) -> Debounce&
+auto
+easing::Debounce::operator=(Debounce const& other) -> Debounce&
 {
     data = other.data;
     data->ref_count += 1;
     return *this;
 }
 
-auto easing::Debounce::get() -> bool
+auto
+easing::Debounce::get() -> bool
 {
     switch (data->state)
     {
@@ -49,7 +52,8 @@ auto easing::Debounce::get() -> bool
     }
 }
 
-auto easing::Debounce::set(bool value) -> bool
+auto
+easing::Debounce::set(bool value) -> bool
 {
     if (!value)
     {

@@ -1,18 +1,21 @@
 #pragma once
-#include "dllexports.h"
-#include "typedefs.h"
+#include "Base/dllexports.h"
+#include "Base/typedefs.h"
 
-void DLL_PUBLIC test_function();
+void DLL_PUBLIC
+test_function();
 
 namespace easing
 {
 
-enum class LinearState : uint8 {
+enum class LinearState : uint8
+{
     Default,
     Running,
 };
 
-struct DLL_PUBLIC LinearData {
+struct DLL_PUBLIC LinearData
+{
     float       target_value;
     float       current_value;
     float       rate;
@@ -20,7 +23,8 @@ struct DLL_PUBLIC LinearData {
     uint8       ref_count;
 };
 
-struct DLL_PUBLIC Linear {
+struct DLL_PUBLIC Linear
+{
     Linear() = default;
     ~Linear()
     {
@@ -36,7 +40,8 @@ struct DLL_PUBLIC Linear {
         data->ref_count += 1;
     }
 
-    Linear& operator=(Linear const& other)
+    Linear&
+    operator=(Linear const& other)
     {
         data = other.data;
         data->ref_count += 1;
@@ -46,13 +51,15 @@ struct DLL_PUBLIC Linear {
     // Linear(Linear&& other) = delete;
     // Linear& operator=(Linear&& other) = delete;
 
-    void set_data(LinearData* data_ptr)
+    void
+    set_data(LinearData* data_ptr)
     {
         data = data_ptr;
         data->ref_count += 1;
     };
 
-    void reset(float value, float rate)
+    void
+    reset(float value, float rate)
     {
         data->target_value  = value;
         data->current_value = value;
@@ -60,13 +67,15 @@ struct DLL_PUBLIC Linear {
         data->state         = LinearState::Default;
     }
 
-    void set(float value)
+    void
+    set(float value)
     {
         data->target_value = value;
         data->state        = LinearState::Running;
     }
 
-    float get()
+    float
+    get()
     {
         return data->current_value;
     }
@@ -77,6 +86,7 @@ private:
 };
 
 
-DLL_PUBLIC void integrate_linear(LinearData& data, float ms);
+DLL_PUBLIC void
+integrate_linear(LinearData& data, float ms);
 
 } // namespace easing
