@@ -1,10 +1,11 @@
-#include "easing/easing.h"
+#include "Easing/easing.h"
 #include <cassert>
 #include <stdio.h>
 #include <vector>
 
 
-void test_make_debounce_switch_creates_one_element()
+void
+test_make_debounce_switch_creates_one_element()
 {
     easing::Easer easer;
     auto          debounce = make_debounce_switch(easer, 10);
@@ -13,7 +14,8 @@ void test_make_debounce_switch_creates_one_element()
     assert(easer.debouncers[0].timeout_ms == 10);
 }
 
-void test_make_debounce_switch_twice_creates_two_elements()
+void
+test_make_debounce_switch_twice_creates_two_elements()
 {
     easing::Easer easer;
 
@@ -33,7 +35,8 @@ void test_make_debounce_switch_twice_creates_two_elements()
     assert(easer.debouncers[1].state == easing::DebounceState::DEFAULT);
 }
 
-void test_get_set_and_step_example()
+void
+test_get_set_and_step_example()
 {
     easing::Easer easer;
     auto          debounce = easing::make_debounce_switch(easer, 20);
@@ -69,7 +72,8 @@ void test_get_set_and_step_example()
     assert(easer.debouncers[0].time_ms == 0);
 }
 
-void debounce_main()
+void
+debounce_main()
 {
     test_make_debounce_switch_creates_one_element();
     test_make_debounce_switch_twice_creates_two_elements();

@@ -2,9 +2,6 @@
 #include "Base/dllexports.h"
 #include "Base/typedefs.h"
 
-void DLL_PUBLIC
-test_function();
-
 namespace easing
 {
 

@@ -1,4 +1,4 @@
-#include "easing/debounce.h"
+#include "Easing/debounce.h"
 #include "Base/dllexports.h"
 
 

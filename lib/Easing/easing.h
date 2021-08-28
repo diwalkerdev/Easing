@@ -3,8 +3,8 @@
 #include "Base/containers/backfill_vector.hpp"
 #include "Base/dllexports.h"
 #include "Base/typedefs.h"
-#include "easing/debounce.h"
-#include "easing/linear.h"
+#include "Easing/debounce.h"
+#include "Easing/linear.h"
 #include <array>
 #include <cstddef>
 

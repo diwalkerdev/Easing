@@ -1,9 +1,10 @@
-#include "easing/debounce.h"
-#include "easing/easing.h"
-#include "easing/linear.h"
+#include "Easing/debounce.h"
+#include "Easing/easing.h"
+#include "Easing/linear.h"
 
 
-void easing::integrate(backfill_vector<easing::DebounceData, 20>& debouncers, int ms)
+void
+easing::integrate(backfill_vector<easing::DebounceData, 20>& debouncers, int ms)
 {
     for (auto& item : debouncers)
     {
@@ -11,7 +12,8 @@ void easing::integrate(backfill_vector<easing::DebounceData, 20>& debouncers, in
     }
 }
 
-void easing::integrate(backfill_vector<easing::LinearData, 20>& linear_easers, int ms)
+void
+easing::integrate(backfill_vector<easing::LinearData, 20>& linear_easers, int ms)
 {
     for (auto& item : linear_easers)
     {
@@ -19,7 +21,8 @@ void easing::integrate(backfill_vector<easing::LinearData, 20>& linear_easers, i
     }
 }
 
-void easing::sweep(backfill_vector<easing::DebounceData, 20>& debouncers)
+void
+easing::sweep(backfill_vector<easing::DebounceData, 20>& debouncers)
 {
     for (size_t i = 0; i < debouncers.size(); ++i)
     {

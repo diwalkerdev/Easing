@@ -1,10 +1,7 @@
-#include "easing/linear.h"
+#include "Easing/linear.h"
 
-DLL_PUBLIC void test_function()
-{
-}
-
-void easing::integrate_linear(LinearData& data, float ms)
+void
+easing::integrate_linear(LinearData& data, float ms)
 {
     if (data.state == LinearState::Default)
     {
