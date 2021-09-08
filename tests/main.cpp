@@ -1,7 +1,9 @@
+// extern void
+// debounce_main();
+// extern void
+// linear_main();
 extern void
-debounce_main();
-extern void
-linear_main();
+Test_LinearEaser();
 extern void
 Test_RemoveItems();
 
@@ -9,8 +11,9 @@ Test_RemoveItems();
 int
 main()
 {
-    debounce_main();
-    linear_main();
+    // debounce_main();
+    // linear_main();
+    Test_LinearEaser();
     Test_RemoveItems();
     return 0;
 }
