@@ -108,7 +108,7 @@ Test_LinearEaser()
     printf("Test_LinearEaser\n");
 
     Easing_Float value;
-    Easing_Init2<Easing_Linear>(value, 10.f, 0.f);
+    Easing_Init<Easing_Linear>(value, 10.f, 0.f);
 
     auto* props = Easing_Cast<Easing_Linear>(value);
     assert(props);

@@ -109,7 +109,7 @@ Easing_Cast(Easing_Float& value) -> Tp*
 
 template <typename Tp>
 void
-Easing_Init2(Easing_Float& flt, float value, float eased)
+Easing_Init(Easing_Float& flt, float value, float eased)
 {
-    Easing_Init2<Tp>(flt, value, eased);
+    Easing_Init<Tp>(flt, value, eased);
 }

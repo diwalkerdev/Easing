@@ -12,10 +12,6 @@ public_struct Easing_Engine
 {
     backfill_vector<Easing_Linear, 10>               linear;
     backfill_vector<Easing_PolynomialProperties, 10> poly;
-    ~Easing_Engine()
-    {
-        printf("~Easing_Engine\n");
-    }
 };
 
 extern Easing_Engine global_bfv;

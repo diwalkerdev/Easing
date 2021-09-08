@@ -14,7 +14,7 @@ public_struct Easing_Linear
 
 template <>
 inline void
-Easing_Init2<Easing_Linear>(Easing_Float& flt, float value, float eased)
+Easing_Init<Easing_Linear>(Easing_Float& flt, float value, float eased)
 {
     Easing_Init(Easing_Type::Linear, flt, value, eased);
 }

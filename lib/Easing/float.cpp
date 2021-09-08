@@ -48,6 +48,5 @@ Easing_Float::Easing_Float(Easing_Type type, float value, float eased)
 
 Easing_Float::~Easing_Float()
 {
-    printf("~Easing_Float\n");
     Easing_EngineRemove(*this);
 }
