@@ -21,6 +21,10 @@ public_func void
 Easing_Init(Easing_Engine& engine, Easing_Type type, Easing_Properties** values);
 
 
+public_func void
+Easing_Free(Easing_Engine& engine);
+
+
 template <typename Tp, size_t Size>
 void
 Easing_EngineRemove(backfill_vector<Tp, Size>& container, int index)
